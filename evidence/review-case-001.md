@@ -17,3 +17,6 @@ evidence/case-001-results.json（由 scripts/backtest.py 确定性生成）
 
 ## Critic 结论
 候选策略不予验收，按 P18 修订循环发回 Generator 修复（继续/结束决策权在 Orchestrator 与人类）。
+
+## 备注
+超额 +0.48% 在扣除交易成本后预计转负（呼应 ISS-001）；合成数据无真实动量效应，该结果为预期现象。
