@@ -1,0 +1,11 @@
+{
+  "case_id": "case-001",
+  "strategy": "momentum_top1_lookback20",
+  "as_of": "2026-06-120",
+  "n_trades": 99,
+  "signal_timing_check": "全部信号 ≤ as_of，收益发生在信号之后（P19）",
+  "last_signal_date": "2026-06-119",
+  "strategy_total_return_pct": 16.91,
+  "benchmark_equal_weight_pct": 16.44,
+  "excess_pct": 0.48
+}
