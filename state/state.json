@@ -1,7 +1,7 @@
 {
   "case_id": "case-001",
   "version": "0.1.0",
-  "status": "pending",
+  "status": "generator_working",
   "request_id": "req-20261109-001",
   "artifacts": [
     {
