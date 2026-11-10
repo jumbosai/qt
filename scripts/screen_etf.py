@@ -148,6 +148,7 @@ def main():
             "as_of": as_of,
             "as_of_consistent": len(as_ofs) == 1,
             "n_etfs": len(etfs),
+            "adjust": meta.get("price_params", {}).get("adjust"),
         },
         "screen": sorted(etfs, key=lambda e: e["code"]),
         "review_required": review,

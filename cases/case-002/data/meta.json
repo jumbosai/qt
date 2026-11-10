@@ -5,7 +5,7 @@
     "start_date": "2025-11-10",
     "end_date": "2026-11-10",
     "interval": "D",
-    "adjust": "数据源默认口径：A股为前复权(forward)，美股为不复权(none)"
+    "adjust": "none（全市场统一不复权·价格收益口径；ISS-006 修复：原 A 股前复权含分红、美股不含股息，口径混用；美股 adjust=forward 数据源不支持返回 EMPTY_DATA，故统一为 none，分红再投资收益未计入）"
   },
   "price_note": "所有 10 只 ETF 的最后一条数据日期均为 2026-11-09（检索日当日收盘尚未入库）。",
   "fund_size_status": "partial：5只候选已于2026-11-10人工联网复核；5只已淘汰ETF仍为n/a（已被动量/回撤规则淘汰，规模不影响结论）",

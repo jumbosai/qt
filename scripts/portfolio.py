@@ -7,6 +7,7 @@ from pathlib import Path
 ROOT = Path(__file__).parent.parent
 RESULTS = ROOT / "evidence" / "case-002-results.json"
 OUT = ROOT / "evidence" / "portfolio-target.md"
+TRADE_OUT = ROOT / "evidence" / "case-002-trade-order.md"
 
 # 核心仓（事先写死，改动须走演进流程 P27-33）：(代码, 目标权重%)
 CORE = [("510300", 40.0), ("511010", 20.0), ("518880", 10.0)]
@@ -77,6 +78,37 @@ def main():
         "",
     ]
     OUT.write_text("\n".join(lines), encoding="utf-8")
+
+    # 调仓单（ISS-007）：首次建仓，换手率 100%，成本 = 本金 × 换手率 × 费率
+    principal = 100_000  # 示例本金（元），仅用于金额演示
+    turnover = 1.0       # 本期空仓 → 目标组合，单边买入
+    cost_total = principal * turnover * COMMISSION
+    cost_sat = principal * (SAT_TOTAL / 100) * turnover * COMMISSION
+    trade = [
+        "# case-002 调仓单（首次建仓）",
+        "",
+        f"数据 as_of：{as_of} ｜ 依据：evidence/portfolio-target.md（satellite_candidates 已生效）",
+        "本期性质：首次建仓。当前持仓 = 现金 100%，目标 = 权重表 → 买入比例 = 目标权重，换手率 = 100%（单边）",
+        "",
+        "| 代码 | 名称 | 角色 | 目标权重 | 买入金额（示例本金 10 万元） |",
+        "|---|---|---|---|---|",
+    ]
+    trade += [f"| {c} | {n} | {r} | {p} | {principal * float(p.strip('%')) / 100:,.0f} |"
+              for c, n, r, p in rows]
+    trade += [
+        f"| 合计 | | | 100% | {principal:,.0f} |",
+        "",
+        "## 交易成本估算（卫星换手率 × 预估费率）",
+        "",
+        "- 费率口径：佣金万三（0.03%）＋ ETF 无印花税（估算，实际以券商为准；美股 ETF 佣金结构可能不同）",
+        f"- 本期换手率 = {turnover * 100:.0f}%（空仓 → 目标组合，单边买入）",
+        f"- 整体买入成本 = 本金 × {turnover * 100:.0f}% × 0.03%：示例 10 万元 ≈ {cost_total:.1f} 元",
+        f"- 其中卫星仓 = 本金 × {SAT_TOTAL:.0f}% × {turnover * 100:.0f}% × 0.03% = 本金 × 0.009%：示例 10 万元 ≈ {cost_sat:.1f} 元",
+        "- 若券商设单笔最低 5 元佣金：整笔买入约 30 元不受影响；拆成多笔小单可能按下限收取",
+        "",
+    ]
+    TRADE_OUT.write_text("\n".join(trade), encoding="utf-8")
+    print(f"→ 调仓单已存 {TRADE_OUT.relative_to(ROOT)}")
 
     print(f"数据 as_of={as_of}，核心 {CORE_TOTAL:.0f}% + 卫星 {SAT_TOTAL:.0f}%（Top5 各 {SAT_PER:.0f}%）")
     print(fmt_row(header))

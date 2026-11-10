@@ -1,6 +1,6 @@
 {
   "case_id": "case-002",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "status": "review",
   "request_id": "req-20261109-001",
   "artifacts": [
@@ -21,7 +21,7 @@
     },
     {
       "path": "evidence/case-002-results.json",
-      "hash": "5456acb7b648951c",
+      "hash": "5a775193e1953167",
       "created_at": "2026-11-10"
     },
     {
@@ -31,7 +31,32 @@
     },
     {
       "path": "evidence/review-case-002.md",
-      "hash": "bad833fdcba951ac",
+      "hash": "56d5ac841113c9ae",
+      "created_at": "2026-11-10"
+    },
+    {
+      "path": "cases/case-002/data/meta.json",
+      "hash": "2d2d32f7ab1c9fb3",
+      "created_at": "2026-11-10"
+    },
+    {
+      "path": "evidence/case-002-trade-order.md",
+      "hash": "e8f77cb457d355e0",
+      "created_at": "2026-11-10"
+    },
+    {
+      "path": "evidence/evo-task-ISS-006.md",
+      "hash": "2a03c1709a1e7cba",
+      "created_at": "2026-11-10"
+    },
+    {
+      "path": "evidence/evo-task-ISS-007.md",
+      "hash": "c92e77ace5b722aa",
+      "created_at": "2026-11-10"
+    },
+    {
+      "path": "evidence/evo-task-ISS-008.md",
+      "hash": "f8ebe7792fbc800d",
       "created_at": "2026-11-10"
     }
   ],
@@ -59,14 +84,67 @@
       "desc": "review_required 名单残留已淘汰的 5 只ETF，应清空",
       "owner": "generator",
       "severity": "low",
-      "status": "open"
+      "status": "open",
+      "plan": "下月重跑筛选时修正 review_required 只含未淘汰品种（改 screen_etf.py 输出逻辑）；本月人工知悉，不影响结论"
     },
     {
       "id": "ISS-005",
       "desc": "511010 国债同时出现在核心仓(20%)和卫星仓(6%)，合计 26%，存在重复持仓",
       "owner": "generator",
       "severity": "medium",
-      "status": "open"
+      "status": "open",
+      "plan": "待人类裁决：接受 511010 合计 26% 敞口，或走 P27-33 演进修改 brief 目标组合"
+    },
+    {
+      "id": "ISS-006",
+      "desc": "跨市场收益口径不一致（A股前复权含分红 vs 美股不复权）",
+      "owner": "generator",
+      "severity": "medium",
+      "status": "resolved",
+      "resolved_at": "2026-11-10",
+      "resolution": "全市场统一不复权（none）；7只A股重取+meta/results记录口径；美股adjust=forward数据源不支持，弃用"
+    },
+    {
+      "id": "ISS-007",
+      "desc": "无调仓单，成本提示缺卫星换手率×预估费率口径",
+      "owner": "generator",
+      "severity": "medium",
+      "status": "resolved",
+      "resolved_at": "2026-11-10",
+      "resolution": "portfolio.py 增产生 evidence/case-002-trade-order.md（买入明细+金额+换手率100%×万三成本式）"
+    },
+    {
+      "id": "ISS-008",
+      "desc": "换血规则缺结构化基线",
+      "owner": "generator",
+      "severity": "medium",
+      "status": "resolved",
+      "resolved_at": "2026-11-10",
+      "resolution": "state.json 增 current_satellite={as_of,list,basis,set_at}"
+    },
+    {
+      "id": "ISS-009",
+      "desc": "规模复核来源时点不齐（三来源三时点未交叉验证）",
+      "owner": "generator",
+      "severity": "low",
+      "status": "open",
+      "plan": "下月规模复核统一来源（issuer 官网优先）并定义新鲜度规则（如 ≤45 天）；VTI 改查 Vanguard 官方 factsheet"
+    },
+    {
+      "id": "ISS-010",
+      "desc": "卫星美股三只成分高度重叠，三重暴露未披露",
+      "owner": "generator",
+      "severity": "low",
+      "status": "open",
+      "plan": "下月评估是否在 brief 增加卫星成分重叠度披露（改 brief 需人类批准）；本期已记录风险"
+    },
+    {
+      "id": "ISS-011",
+      "desc": "首期基线 2026-11-09 非月末交易日",
+      "owner": "generator",
+      "severity": "low",
+      "status": "open",
+      "plan": "月度 cron 上线时重定基线：建议以首次月末运行重建基线，本期 11-09 基线仅供演示链路"
     }
   ],
   "approvals": {
@@ -77,5 +155,17 @@
       "approved_by": null,
       "note": "候选名单与目标权重待人工签字后生效"
     }
+  },
+  "current_satellite": {
+    "as_of": "2026-11-09",
+    "list": [
+      "VTI",
+      "SPY",
+      "QQQ",
+      "510880",
+      "511010"
+    ],
+    "basis": "evidence/case-002-results.json#satellite_candidates",
+    "set_at": "2026-11-10"
   }
 }

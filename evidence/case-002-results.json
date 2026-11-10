@@ -12,7 +12,8 @@
     "retrieved_date": "2026-11-10",
     "as_of": "2026-11-09",
     "as_of_consistent": true,
-    "n_etfs": 10
+    "n_etfs": 10,
+    "adjust": "none（全市场统一不复权·价格收益口径；ISS-006 修复：原 A 股前复权含分红、美股不含股息，口径混用；美股 adjust=forward 数据源不支持返回 EMPTY_DATA，故统一为 none，分红再投资收益未计入）"
   },
   "screen": [
     {
@@ -42,7 +43,7 @@
       "n_rows": 242,
       "first_date": "2025-11-10",
       "last_date": "2026-11-09",
-      "return_pct": -11.85,
+      "return_pct": -14.08,
       "max_drawdown_pct": -20.15,
       "fund_size_亿元": "n/a",
       "fund_size_source": null,
@@ -61,8 +62,8 @@
       "n_rows": 242,
       "first_date": "2025-11-10",
       "last_date": "2026-11-09",
-      "return_pct": -8.95,
-      "max_drawdown_pct": -30.19,
+      "return_pct": -11.22,
+      "max_drawdown_pct": -31.42,
       "fund_size_亿元": "n/a",
       "fund_size_source": null,
       "fund_size_as_of": null,
@@ -81,7 +82,7 @@
       "n_rows": 242,
       "first_date": "2025-11-10",
       "last_date": "2026-11-09",
-      "return_pct": 6.08,
+      "return_pct": 1.37,
       "max_drawdown_pct": -13.75,
       "fund_size_亿元": 188.56,
       "fund_size_source": "https://fundf10.eastmoney.com/gmbd_510880.html",
@@ -98,8 +99,8 @@
       "n_rows": 242,
       "first_date": "2025-11-10",
       "last_date": "2026-11-09",
-      "return_pct": 2.54,
-      "max_drawdown_pct": -0.36,
+      "return_pct": 0.62,
+      "max_drawdown_pct": -0.83,
       "fund_size_亿元": 73.26,
       "fund_size_source": "https://fundf10.eastmoney.com/gmbd_511010.html",
       "fund_size_as_of": "2026-09-30",
@@ -202,8 +203,8 @@
   ],
   "review_required": [
     "518880",
-    "510500",
     "588000",
+    "510500",
     "510300",
     "159915"
   ],
