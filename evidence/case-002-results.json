@@ -1,0 +1,265 @@
+{
+  "case_id": "case-002",
+  "stage": "satellite_screen",
+  "rules": {
+    "momentum": "近1年涨幅 = (末日收盘-首日收盘)/首日收盘；后50%淘汰（全池排名，并列按代码字典序）",
+    "drawdown": "近1年最大回撤 ≤ -25% 淘汰",
+    "size": "基金规模 < 5亿元淘汰；缺失标 n/a 转人工复核，不得视为通过（P26）",
+    "ranking": "幸存者按近1年涨幅降序取前5"
+  },
+  "data": {
+    "dir": "cases/case-002/data",
+    "retrieved_date": "2026-11-10",
+    "as_of": "2026-11-09",
+    "as_of_consistent": true,
+    "n_etfs": 10
+  },
+  "screen": [
+    {
+      "code": "159915",
+      "ticker": "159915.SZ",
+      "name": "创业板ETF",
+      "n_rows": 242,
+      "first_date": "2025-11-10",
+      "last_date": "2026-11-09",
+      "return_pct": -21.72,
+      "max_drawdown_pct": -45.32,
+      "fund_size_亿元": "n/a",
+      "fund_size_source": null,
+      "fund_size_as_of": null,
+      "fund_size_query_date": null,
+      "elimination_reasons": [
+        "涨幅后50%",
+        "最大回撤≤-25%"
+      ],
+      "size_missing": true,
+      "status": "eliminated"
+    },
+    {
+      "code": "510300",
+      "ticker": "510300.SH",
+      "name": "沪深300ETF",
+      "n_rows": 242,
+      "first_date": "2025-11-10",
+      "last_date": "2026-11-09",
+      "return_pct": -11.85,
+      "max_drawdown_pct": -20.15,
+      "fund_size_亿元": "n/a",
+      "fund_size_source": null,
+      "fund_size_as_of": null,
+      "fund_size_query_date": null,
+      "elimination_reasons": [
+        "涨幅后50%"
+      ],
+      "size_missing": true,
+      "status": "eliminated"
+    },
+    {
+      "code": "510500",
+      "ticker": "510500.SH",
+      "name": "中证500ETF",
+      "n_rows": 242,
+      "first_date": "2025-11-10",
+      "last_date": "2026-11-09",
+      "return_pct": -8.95,
+      "max_drawdown_pct": -30.19,
+      "fund_size_亿元": "n/a",
+      "fund_size_source": null,
+      "fund_size_as_of": null,
+      "fund_size_query_date": null,
+      "elimination_reasons": [
+        "涨幅后50%",
+        "最大回撤≤-25%"
+      ],
+      "size_missing": true,
+      "status": "eliminated"
+    },
+    {
+      "code": "510880",
+      "ticker": "510880.SH",
+      "name": "红利ETF",
+      "n_rows": 242,
+      "first_date": "2025-11-10",
+      "last_date": "2026-11-09",
+      "return_pct": 6.08,
+      "max_drawdown_pct": -13.75,
+      "fund_size_亿元": 188.56,
+      "fund_size_source": "https://fundf10.eastmoney.com/gmbd_510880.html",
+      "fund_size_as_of": "2026-09-30",
+      "fund_size_query_date": "2026-11-10",
+      "elimination_reasons": [],
+      "size_missing": false,
+      "status": "candidate"
+    },
+    {
+      "code": "511010",
+      "ticker": "511010.SH",
+      "name": "国债ETF",
+      "n_rows": 242,
+      "first_date": "2025-11-10",
+      "last_date": "2026-11-09",
+      "return_pct": 2.54,
+      "max_drawdown_pct": -0.36,
+      "fund_size_亿元": 73.26,
+      "fund_size_source": "https://fundf10.eastmoney.com/gmbd_511010.html",
+      "fund_size_as_of": "2026-09-30",
+      "fund_size_query_date": "2026-11-10",
+      "elimination_reasons": [],
+      "size_missing": false,
+      "status": "candidate"
+    },
+    {
+      "code": "518880",
+      "ticker": "518880.SH",
+      "name": "黄金ETF",
+      "n_rows": 242,
+      "first_date": "2025-11-10",
+      "last_date": "2026-11-09",
+      "return_pct": -6.28,
+      "max_drawdown_pct": -33.29,
+      "fund_size_亿元": "n/a",
+      "fund_size_source": null,
+      "fund_size_as_of": null,
+      "fund_size_query_date": null,
+      "elimination_reasons": [
+        "涨幅后50%",
+        "最大回撤≤-25%"
+      ],
+      "size_missing": true,
+      "status": "eliminated"
+    },
+    {
+      "code": "588000",
+      "ticker": "588000.SH",
+      "name": "科创50ETF",
+      "n_rows": 242,
+      "first_date": "2025-11-10",
+      "last_date": "2026-11-09",
+      "return_pct": -10.22,
+      "max_drawdown_pct": -48.17,
+      "fund_size_亿元": "n/a",
+      "fund_size_source": null,
+      "fund_size_as_of": null,
+      "fund_size_query_date": null,
+      "elimination_reasons": [
+        "涨幅后50%",
+        "最大回撤≤-25%"
+      ],
+      "size_missing": true,
+      "status": "eliminated"
+    },
+    {
+      "code": "QQQ",
+      "ticker": "QQQ.O",
+      "name": "Invesco QQQ Trust",
+      "n_rows": 251,
+      "first_date": "2025-11-10",
+      "last_date": "2026-11-09",
+      "return_pct": 9.0,
+      "max_drawdown_pct": -14.82,
+      "fund_size_亿元": 31154.1,
+      "fund_size_source": "https://finance.yahoo.com/quote/QQQ/",
+      "fund_size_as_of": "2026-11-09",
+      "fund_size_query_date": "2026-11-10",
+      "elimination_reasons": [],
+      "size_missing": false,
+      "status": "candidate"
+    },
+    {
+      "code": "SPY",
+      "ticker": "SPY.O",
+      "name": "SPDR S&P 500 ETF Trust",
+      "n_rows": 251,
+      "first_date": "2025-11-10",
+      "last_date": "2026-11-09",
+      "return_pct": 10.46,
+      "max_drawdown_pct": -9.13,
+      "fund_size_亿元": 52251.4,
+      "fund_size_source": "https://www.ssga.com/us/en/intermediary/etfs/state-street-spdr-s-500-etf-trust-spy",
+      "fund_size_as_of": "2026-11-06",
+      "fund_size_query_date": "2026-11-10",
+      "elimination_reasons": [],
+      "size_missing": false,
+      "status": "candidate"
+    },
+    {
+      "code": "VTI",
+      "ticker": "VTI.O",
+      "name": "Vanguard Total Stock Market ETF",
+      "n_rows": 251,
+      "first_date": "2025-11-10",
+      "last_date": "2026-11-09",
+      "return_pct": 10.74,
+      "max_drawdown_pct": -9.2,
+      "fund_size_亿元": 46009.4,
+      "fund_size_source": "https://companiesmarketcap.com/vanguard-total-stock-market-index-fund-etf-shares/marketcap/",
+      "fund_size_as_of": "2026-09",
+      "fund_size_query_date": "2026-11-10",
+      "elimination_reasons": [],
+      "size_missing": false,
+      "status": "candidate"
+    }
+  ],
+  "review_required": [
+    "518880",
+    "510500",
+    "588000",
+    "510300",
+    "159915"
+  ],
+  "satellite_candidates": [
+    "VTI",
+    "SPY",
+    "QQQ",
+    "510880",
+    "511010"
+  ],
+  "satellite_candidates_confirmed": true,
+  "note": "规模复核通过：候选全部 ≥5亿元，satellite_candidates 正式生效",
+  "size_review": {
+    "method": "stock_finance_data 无 ETF AUM 字段，候选规模人工联网复核（issuer官网/Yahoo Finance/天天基金）",
+    "fx": {
+      "USD_CNY": 6.7167,
+      "source": "https://www.chinamoney.com.cn/chinese/bkccpr/ （中国货币网人民币汇率中间价）",
+      "as_of": "2026-11-10"
+    },
+    "items": [
+      {
+        "code": "VTI",
+        "fund_size_亿元": 46009.4,
+        "source": "https://companiesmarketcap.com/vanguard-total-stock-market-index-fund-etf-shares/marketcap/",
+        "as_of": "2026-09",
+        "query_date": "2026-11-10"
+      },
+      {
+        "code": "SPY",
+        "fund_size_亿元": 52251.4,
+        "source": "https://www.ssga.com/us/en/intermediary/etfs/state-street-spdr-s-500-etf-trust-spy",
+        "as_of": "2026-11-06",
+        "query_date": "2026-11-10"
+      },
+      {
+        "code": "QQQ",
+        "fund_size_亿元": 31154.1,
+        "source": "https://finance.yahoo.com/quote/QQQ/",
+        "as_of": "2026-11-09",
+        "query_date": "2026-11-10"
+      },
+      {
+        "code": "510880",
+        "fund_size_亿元": 188.56,
+        "source": "https://fundf10.eastmoney.com/gmbd_510880.html",
+        "as_of": "2026-09-30",
+        "query_date": "2026-11-10"
+      },
+      {
+        "code": "511010",
+        "fund_size_亿元": 73.26,
+        "source": "https://fundf10.eastmoney.com/gmbd_511010.html",
+        "as_of": "2026-09-30",
+        "query_date": "2026-11-10"
+      }
+    ],
+    "conclusion": "候选5只规模均 >5亿元，规模门槛通过"
+  }
+}

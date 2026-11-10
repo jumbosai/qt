@@ -1,0 +1,135 @@
+{
+  "retrieved_date": "2026-11-10",
+  "source": "kimi-datasource / stock_finance_data",
+  "price_params": {
+    "start_date": "2025-11-10",
+    "end_date": "2026-11-10",
+    "interval": "D",
+    "adjust": "数据源默认口径：A股为前复权(forward)，美股为不复权(none)"
+  },
+  "price_note": "所有 10 只 ETF 的最后一条数据日期均为 2026-11-09（检索日当日收盘尚未入库）。",
+  "fund_size_status": "partial：5只候选已于2026-11-10人工联网复核；5只已淘汰ETF仍为n/a（已被动量/回撤规则淘汰，规模不影响结论）",
+  "fund_size_reason": "stock_finance_data 不提供 ETF 基金规模(AUM)，已实测 get_stock_info / get_holder_info 相关字段对 ETF 返回空值。候选5只改人工联网复核，来源与查询日期见各 etfs 条目的 fund_size_source / fund_size_query_date；美元规模按查询日人民币中间价 6.7167 折算。",
+  "etfs": {
+    "510300": {
+      "ticker": "510300.SH",
+      "name": "沪深300ETF",
+      "file": "510300.csv",
+      "rows": 242,
+      "as_of": "2026-11-09",
+      "currency": "CNY",
+      "fund_size_亿元": "n/a"
+    },
+    "510500": {
+      "ticker": "510500.SH",
+      "name": "中证500ETF",
+      "file": "510500.csv",
+      "rows": 242,
+      "as_of": "2026-11-09",
+      "currency": "CNY",
+      "fund_size_亿元": "n/a"
+    },
+    "159915": {
+      "ticker": "159915.SZ",
+      "name": "创业板ETF",
+      "file": "159915.csv",
+      "rows": 242,
+      "as_of": "2026-11-09",
+      "currency": "CNY",
+      "fund_size_亿元": "n/a"
+    },
+    "588000": {
+      "ticker": "588000.SH",
+      "name": "科创50ETF",
+      "file": "588000.csv",
+      "rows": 242,
+      "as_of": "2026-11-09",
+      "currency": "CNY",
+      "fund_size_亿元": "n/a"
+    },
+    "510880": {
+      "ticker": "510880.SH",
+      "name": "红利ETF",
+      "file": "510880.csv",
+      "rows": 242,
+      "as_of": "2026-11-09",
+      "currency": "CNY",
+      "fund_size_亿元": 188.56,
+      "fund_size_raw": "188.56亿元",
+      "fund_size_source": "https://fundf10.eastmoney.com/gmbd_510880.html",
+      "fund_size_as_of": "2026-09-30",
+      "fund_size_query_date": "2026-11-10",
+      "fund_size_note": "天天基金 期末净资产（2026年3季报）"
+    },
+    "518880": {
+      "ticker": "518880.SH",
+      "name": "黄金ETF",
+      "file": "518880.csv",
+      "rows": 242,
+      "as_of": "2026-11-09",
+      "currency": "CNY",
+      "fund_size_亿元": "n/a"
+    },
+    "511010": {
+      "ticker": "511010.SH",
+      "name": "国债ETF",
+      "file": "511010.csv",
+      "rows": 242,
+      "as_of": "2026-11-09",
+      "currency": "CNY",
+      "fund_size_亿元": 73.26,
+      "fund_size_raw": "73.26亿元",
+      "fund_size_source": "https://fundf10.eastmoney.com/gmbd_511010.html",
+      "fund_size_as_of": "2026-09-30",
+      "fund_size_query_date": "2026-11-10",
+      "fund_size_note": "天天基金 期末净资产（2026年3季报）"
+    },
+    "SPY": {
+      "ticker": "SPY.O",
+      "name": "SPDR S&P 500 ETF Trust",
+      "file": "SPY.csv",
+      "rows": 251,
+      "as_of": "2026-11-09",
+      "currency": "USD",
+      "fund_size_亿元": 52251.4,
+      "fund_size_raw": "$777.93B（$777,931.94M）",
+      "fund_size_source": "https://www.ssga.com/us/en/intermediary/etfs/state-street-spdr-s-500-etf-trust-spy",
+      "fund_size_as_of": "2026-11-06",
+      "fund_size_query_date": "2026-11-10",
+      "fund_size_note": "issuer官网 AUM，as of Nov 06 2026"
+    },
+    "QQQ": {
+      "ticker": "QQQ.O",
+      "name": "Invesco QQQ Trust",
+      "file": "QQQ.csv",
+      "rows": 251,
+      "as_of": "2026-11-09",
+      "currency": "USD",
+      "fund_size_亿元": 31154.1,
+      "fund_size_raw": "$463.83B",
+      "fund_size_source": "https://finance.yahoo.com/quote/QQQ/",
+      "fund_size_as_of": "2026-11-09",
+      "fund_size_query_date": "2026-11-10",
+      "fund_size_note": "Yahoo Finance Net Assets，行情日 2026-11-09"
+    },
+    "VTI": {
+      "ticker": "VTI.O",
+      "name": "Vanguard Total Stock Market ETF",
+      "file": "VTI.csv",
+      "rows": 251,
+      "as_of": "2026-11-09",
+      "currency": "USD",
+      "fund_size_亿元": 46009.4,
+      "fund_size_raw": "$685.00B",
+      "fund_size_source": "https://companiesmarketcap.com/vanguard-total-stock-market-index-fund-etf-shares/marketcap/",
+      "fund_size_as_of": "2026-09",
+      "fund_size_query_date": "2026-11-10",
+      "fund_size_note": "ETF份额口径（Yahoo Finance 的 $2.31T 为含共同基金全部份额类别的整基金口径，不采用）"
+    }
+  },
+  "fund_size_fx": {
+    "USD_CNY": 6.7167,
+    "source": "https://www.chinamoney.com.cn/chinese/bkccpr/ （中国货币网人民币汇率中间价）",
+    "as_of": "2026-11-10"
+  }
+}
