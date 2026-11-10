@@ -30,6 +30,7 @@ def seal_artifacts(state):
 
 def main():
     state = load_state()
+    seal_artifacts(state)   # ← 新增：每次运行先给台账产物盖指纹
     print(f"案件：{state['case_id']}  版本：{state['version']}")
     print(f"当前状态：{state['status']}")
 
