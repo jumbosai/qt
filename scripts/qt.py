@@ -1,11 +1,10 @@
-# scripts/qt.py —— Orchestrator 骨架（对应课件 P14 状态 / P26 条件路由）
-# 作用：读台账 → 看状态 → 决定派给谁 → 更新台账
-
+# scripts/qt.py —— Orchestrator 骨架 v2（P14/P26/P15）
+import hashlib
 import json
 from pathlib import Path
 
-# 找到 state.json 的位置（不管从哪运行都找得到）
-STATE_PATH = Path(__file__).parent.parent / "state" / "state.json"
+ROOT = Path(__file__).parent.parent
+STATE_PATH = ROOT / "state" / "state.json"
 
 def load_state():
     """读台账：把 JSON 文件变成 Python 能看懂的字典"""
@@ -18,6 +17,17 @@ def save_state(state):
         encoding="utf-8",
     )
 
+def fingerprint(path):
+    """给文件算指纹：内容变一点，指纹全变（P15 审计证据）"""
+    data = (ROOT / path).read_bytes()
+    return hashlib.sha256(data).hexdigest()[:16]
+
+def seal_artifacts(state):
+    """把台账里每个产物的哈希填上"""
+    for item in state["artifacts"]:
+        item["hash"] = fingerprint(item["path"])
+    save_state(state)
+
 def main():
     state = load_state()
     print(f"案件：{state['case_id']}  版本：{state['version']}")
@@ -26,8 +36,8 @@ def main():
     # P26 条件路由：根据状态决定下一步去哪
     if state["status"] == "pending":
         state["status"] = "generator_working"
-        save_state(state)
-        print("→ 路由决定：分派给 Generator（状态已写入台账）")
+        seal_artifacts(state)  # ← 派活前给现有产物盖指纹
+        print("→ 路由决定：分派给 Generator（状态+哈希已写入台账）")
     else:
         print("→ 状态机还没写这个分支（期末作业你来扩展）")
 
