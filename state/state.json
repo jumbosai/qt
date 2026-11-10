@@ -1,6 +1,6 @@
 {
-  "case_id": "case-001",
-  "version": "0.2.0",
+  "case_id": "case-002",
+  "version": "0.3.0",
   "status": "review",
   "request_id": "req-20261109-001",
   "artifacts": [
@@ -17,6 +17,21 @@
     {
       "path": "evidence/review-case-001.md",
       "hash": "7c0524e73fee6084",
+      "created_at": "2026-11-10"
+    },
+    {
+      "path": "evidence/case-002-results.json",
+      "hash": "5456acb7b648951c",
+      "created_at": "2026-11-10"
+    },
+    {
+      "path": "evidence/portfolio-target.md",
+      "hash": "b3d3236fb74b0aef",
+      "created_at": "2026-11-10"
+    },
+    {
+      "path": "evidence/review-case-002.md",
+      "hash": "bad833fdcba951ac",
       "created_at": "2026-11-10"
     }
   ],
@@ -38,10 +53,29 @@
       "desc": "仅种子42，未做稳健性检验（P20）",
       "owner": "generator",
       "status": "open"
+    },
+    {
+      "id": "ISS-004",
+      "desc": "review_required 名单残留已淘汰的 5 只ETF，应清空",
+      "owner": "generator",
+      "severity": "low",
+      "status": "open"
+    },
+    {
+      "id": "ISS-005",
+      "desc": "511010 国债同时出现在核心仓(20%)和卫星仓(6%)，合计 26%，存在重复持仓",
+      "owner": "generator",
+      "severity": "medium",
+      "status": "open"
     }
   ],
   "approvals": {
     "human_required": true,
-    "approved_by": null
+    "approved_by": null,
+    "case-002": {
+      "human_required": true,
+      "approved_by": null,
+      "note": "候选名单与目标权重待人工签字后生效"
+    }
   }
 }

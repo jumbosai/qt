@@ -1,4 +1,4 @@
-# scripts/qt.py —— Orchestrator 骨架 v2（P14/P26/P15）
+# scripts/qt.py —— Orchestrator 骨架 v3（P14/P26/P15）
 import hashlib
 import json
 from pathlib import Path
@@ -22,6 +22,24 @@ def fingerprint(path):
     data = (ROOT / path).read_bytes()
     return hashlib.sha256(data).hexdigest()[:16]
 
+def verify_seal(state):
+    """审计验货：台账记录的 hash vs 文件当前实际指纹（v3 新增）"""
+    ok = tampered = 0
+    for item in state["artifacts"]:
+        try:
+            actual = fingerprint(item["path"])
+        except FileNotFoundError:
+            actual = None
+        if actual == item["hash"]:
+            print(f"  OK        {item['path']}")
+            ok += 1
+        else:
+            detail = "文件缺失" if actual is None else f"台账={item['hash']} 实际={actual}"
+            print(f"  TAMPERED  {item['path']}  ({detail})")
+            tampered += 1
+    print(f"验货结果：{ok} 个完好 / {tampered} 个被改动")
+    return tampered
+
 def seal_artifacts(state):
     """把台账里每个产物的哈希填上"""
     for item in state["artifacts"]:
@@ -30,9 +48,12 @@ def seal_artifacts(state):
 
 def main():
     state = load_state()
-    seal_artifacts(state)   # ← 新增：每次运行先给台账产物盖指纹
     print(f"案件：{state['case_id']}  版本：{state['version']}")
     print(f"当前状态：{state['status']}")
+
+    print("→ 审计验货（verify_seal）：")
+    verify_seal(state)      # v3：先验货，台账哈希 vs 实际指纹
+    seal_artifacts(state)   # 再盖章，把最新指纹写入台账
 
     # P26 条件路由：根据状态决定下一步去哪
     if state["status"] == "pending":
