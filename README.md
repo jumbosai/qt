@@ -5,20 +5,18 @@
 > 按课件 P4「完整架构」搭建的迷你量化研究工作流（迷你 Rogo）
 
 ## 工作流图（P4 骨架的实体化）
-用户想法(brief.md) ──授权+边界──→ Orchestrator(qt.py 状态机)
-│ 读/写 state.json（请求ID·产物·哈希·问题项·版本）
-┌─────────────────┴──────────────────┐
-▼                                    ▼
-Generator 负责人(角色卡)              Critic 负责人(角色卡)
-取数+筛选+组合权重                    时点检查+问题项台账(ISS-xxx)
-│←──────────── 修复任务包（/qt:evo）←──────────────┘
-▼
-检查关卡：哈希验货(verify_seal) + 人工审查
-▼
-人类批准(approvals) → 演进：修复→复核→批准/回滚（Git 版本）
-plain
-
-复制
+```mermaid
+flowchart TD
+    A["用户想法 brief.md"] -- "授权+边界" --> B["Orchestrator<br/>qt.py 状态机"]
+    B --> C["Generator<br/>取数·筛选·组合权重"]
+    B --> D["Critic<br/>时点检查·问题项台账 ISS-xxx"]
+    C -- "候选产物+测试" --> D
+    D -- "修复任务包 /qt:evo" --> C
+    D --> E["检查关卡<br/>哈希验货 verify_seal + 人工审查"]
+    E --> F["人类批准 approvals.human_required"]
+    F --> G["演进 P27-33<br/>修复→复核→批准/回滚（Git）"]
+    B -.->|"读写台账 state.json"| B
+```
 
 ## 目录结构
 
