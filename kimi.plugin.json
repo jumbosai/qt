@@ -1,0 +1,6 @@
+{
+  "name": "qt",
+  "version": "0.1.0",
+  "description": "qt 工作流编排插件：开新 case（/qt:start）与遗留问题演进修复（/qt:evo）",
+  "commands": "./commands/"
+}
